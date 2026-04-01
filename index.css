@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-background: var(--bg);
+  --color-foreground: var(--t1);
+  --color-card: var(--bg3);
+  --color-card-foreground: var(--t1);
+  --color-popover: var(--bg3);
+  --color-popover-foreground: var(--t1);
+  --color-primary: #22c55e;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: var(--bg4);
+  --color-secondary-foreground: var(--t2);
+  --color-muted: var(--bg4);
+  --color-muted-foreground: var(--t3);
+  --color-accent: var(--bg4);
+  --color-accent-foreground: var(--t1);
+  --color-destructive: #f43f5e;
+  --color-destructive-foreground: #ffffff;
+  --color-border: var(--border);
+  --color-input: var(--input-bg);
+  --color-ring: #22c55e;
+}
+
+:root {
+  --bg: #f0f2f7;
+  --bg2: #ffffff;
+  --bg3: #ffffff;
+  --bg4: #f5f7ff;
+  --border: rgba(0, 0, 0, 0.08);
+  --border2: rgba(0, 0, 0, 0.14);
+  --t1: #111827;
+  --t2: #4b5563;
+  --t3: #6b7280;
+  --input-bg: #f5f7ff;
+}
+
+.dark {
+  --bg: #0e1117;
+  --bg2: #141820;
+  --bg3: #1a2030;
+  --bg4: #222840;
+  --border: rgba(255, 255, 255, 0.07);
+  --border2: rgba(255, 255, 255, 0.13);
+  --t1: #f0f4ff;
+  --t2: #8b9cbd;
+  --t3: #8b9cbd;
+  --input-bg: #141820;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+@layer components {
+  .form-input, .form-select, .form-textarea {
+    @apply w-full bg-muted/30 border border-border rounded-xl px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-muted-foreground/50;
+  }
+  
+  .btn-primary {
+    @apply bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-sm transition-all hover:-translate-y-0.5 active:translate-y-0;
+  }
+  
+  .btn-muted {
+    @apply bg-muted hover:bg-muted/80 text-muted-foreground font-bold text-sm transition-all;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/20 rounded-full hover:bg-muted-foreground/40;
+}
